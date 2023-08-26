@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${(props) => props.theme['gray-50']};
+    background-color: ${(props) => props.theme['gray-100']};
     color: ${(props) => props.theme['gray-100']};
     -webkit-font-smoothing: antialiased;
 
@@ -28,6 +28,30 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, button{
     font: 400 1rem Roboto, sans-serif;
+  }
+
+  button {
+    height: 2.5rem;
+    width: 100%;
+
+    background-color: ${(props) => props.theme['blue-700']};
+    color: white;
+
+    outline: 0;
+    border: 1px solid ${(props) => props.theme['blue-700']};
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: all 0.25s;
+
+    &:hover {
+      background-color: ${(props) => props.theme['blue-600']};
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
 
 `
