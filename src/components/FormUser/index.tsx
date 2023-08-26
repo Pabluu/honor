@@ -1,14 +1,28 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { FormContainer } from './styles'
+import { FormContainer, MessageError } from './styles'
 
 const formSchema = z.object({
-  name: z.string().min(3),
-  identifier: z.string().min(11),
-  email: z.string().email(),
-  password: z.string().min(6),
-  phone: z.string().min(11),
+  name: z
+    .string()
+    .nonempty('O nome é obrigatório')
+    .min(3, 'O nome deve possuir no minimo 3 letras'),
+
+  identifier: z
+    .string()
+    .nonempty('O identificador é obrigatório')
+    .min(11, 'A identificação deve possuir no minimo 3 letras'),
+
+  email: z
+    .string()
+    .nonempty('O e-mail é obrigatório')
+    .email('Tipo de e-mail inválido'),
+
+  password: z
+    .string()
+    .nonempty('A senha é obrigatória')
+    .min(6, 'A senha deve possuir 6 digitos'),
 })
 
 type FormSchema = z.infer<typeof formSchema>
@@ -17,19 +31,17 @@ export function FormUser() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
   })
 
-  function handleUserSubmit(data: FormSchema) {
-    setTimeout(() => {
-      console.log(data)
-    }, 2000)
+  const handleOnSubmit: SubmitHandler<FormSchema> = (data) => {
+    console.log(data)
   }
 
   return (
-    <FormContainer onSubmit={handleSubmit(handleUserSubmit)}>
+    <FormContainer onSubmit={handleSubmit(handleOnSubmit)}>
       <div>
         <label htmlFor="name">Nome</label>
 
@@ -39,6 +51,8 @@ export function FormUser() {
           id="name"
           {...register('name')}
         />
+
+        {<MessageError>{errors.name?.message}</MessageError>}
       </div>
 
       <div>
@@ -49,6 +63,7 @@ export function FormUser() {
           id="identifier"
           {...register('identifier')}
         />
+        {<MessageError>{errors.identifier?.message}</MessageError>}
       </div>
 
       <div>
@@ -59,6 +74,7 @@ export function FormUser() {
           id="email"
           {...register('email')}
         />
+        {<MessageError>{errors.email?.message}</MessageError>}
       </div>
 
       <div>
@@ -69,20 +85,11 @@ export function FormUser() {
           id="password"
           {...register('password')}
         />
-      </div>
-
-      <div>
-        <label htmlFor="phone">Telefone</label>
-        <input
-          type="text"
-          placeholder="Digite o telefone"
-          id="phone"
-          {...register('phone')}
-        />
+        {<MessageError>{errors.password?.message}</MessageError>}
       </div>
 
       <button type="submit" disabled={isSubmitting}>
-        Enviar
+        Cadastrar
       </button>
     </FormContainer>
   )

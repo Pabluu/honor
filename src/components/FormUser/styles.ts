@@ -1,10 +1,19 @@
 import { styled } from 'styled-components'
 
+export const MessageError = styled.span`
+  color: ${(props) => props.theme['red-600']};
+  font-weight: bold;
+  transition: all 1s;
+  min-height: 19px;
+  margin-top: 5px;
+  font-size: 0.95rem;
+`
+
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 1.35rem;
+  row-gap: 1.25rem;
 
   div {
     display: flex;
@@ -12,19 +21,24 @@ export const FormContainer = styled.form`
 
     label {
       font-weight: 700;
-      padding-block-end: 0.2rem;
+      font-size: 0.8rem;
+      /* padding-block-end: 0.1rem; */
       cursor: pointer;
       width: fit-content;
+
+      color: ${(props) => props.theme['gray-700']};
     }
 
     input {
       width: 100%;
-      height: 2.21rem;
-      padding: 0.5rem;
+      height: 2rem;
+      padding: 0 0.5rem;
 
       outline: none;
-      border: 1px solid ${(props) => props.theme['gray-700']};
-      border-radius: 3px;
+      border: none;
+      border-bottom: 1px solid ${(props) => props.theme['gray-400']};
+
+      /* border-radius: 3px; */
 
       color: black;
 
@@ -34,42 +48,13 @@ export const FormContainer = styled.form`
       }
 
       &::placeholder {
-        color: ${(props) => props.theme['gray-500']};
+        color: ${(props) => props.theme['gray-400']};
       }
-    }
-  }
 
-  button {
-    height: 2.5rem;
-    width: 100%;
-
-    background-color: ${(props) => props.theme['blue-700']};
-    color: white;
-
-    outline: 0;
-    border: 1px solid ${(props) => props.theme['blue-700']};
-    border-radius: 5px;
-
-    cursor: pointer;
-    transition: background-color 0.25s;
-
-    &:hover {
-      background-color: ${(props) => props.theme['blue-500']};
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    &:not(:disabled):hover {
-      background-color: ${(props) => props.theme['blue-700']};
-      border: 1px solid ${(props) => props.theme['blue-700']};
-      color: ${(props) => props.theme.white};
-      transition:
-        background-color 0.2s,
-        color 0.2s,
-        border-color 0.2s;
+      &:focus {
+        border-bottom: 1px solid ${(props) => props.theme['blue-700']};
+        box-shadow: none !important;
+      }
     }
   }
 `
