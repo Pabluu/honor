@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const SignContainer = styled.div`
-  width: 27rem;
-  /* height: 32.1875rem; */
-  border: 1px solid ${(props) => props.theme['gray-700']};
-  border-radius: 10px;
+  height: 32.1875rem;
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
 
-  padding: 1.25rem 1.875rem;
+  display: flex;
 `
