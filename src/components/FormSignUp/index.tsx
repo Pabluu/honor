@@ -1,6 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
+import { api } from '../../lib/axios'
 import { FormContainer, MessageError } from './styles'
 
 const formSchema = z.object({
@@ -29,6 +31,8 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>
 
 export function FormSignUp() {
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -37,8 +41,19 @@ export function FormSignUp() {
     resolver: zodResolver(formSchema),
   })
 
-  const handleOnSubmit: SubmitHandler<FormSchema> = (data) => {
-    console.log(data)
+  const handleOnSubmit: SubmitHandler<FormSchema> = async (data) => {
+    const { name, identifier, email, password } = data
+
+    const response = await api.post('/signup', {
+      name,
+      identifier,
+      email,
+      password,
+    })
+
+    if (response.status === 201) {
+      navigate('/')
+    }
   }
 
   return (
