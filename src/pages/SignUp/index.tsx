@@ -1,5 +1,5 @@
 import { Coins } from 'phosphor-react'
-import { FormUser } from '../../components/FormUser'
+import { FormSignUp } from '../../components/FormSignUp'
 import { SignContainer } from '../../components/Sign/styles'
 import { DescriptionSignUp, UpContainer } from './styles'
 
@@ -8,7 +8,7 @@ export function SignUp() {
     <SignContainer>
       <UpContainer>
         {/* <Title>Cadastro</Title> */}
-        <FormUser />
+        <FormSignUp />
       </UpContainer>
 
       <DescriptionSignUp>

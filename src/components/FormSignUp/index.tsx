@@ -12,7 +12,8 @@ const formSchema = z.object({
   identifier: z
     .string()
     .nonempty('O identificador é obrigatório')
-    .min(11, 'A identificação deve possuir no minimo 3 letras'),
+    .min(11, 'O CNPJ/CPF deve possuir no minimo 11 digitos')
+    .max(18, 'O CNPJ/CPF deve possuir no máximo 18 digitos'),
 
   email: z
     .string()
@@ -27,7 +28,7 @@ const formSchema = z.object({
 
 type FormSchema = z.infer<typeof formSchema>
 
-export function FormUser() {
+export function FormSignUp() {
   const {
     register,
     handleSubmit,
