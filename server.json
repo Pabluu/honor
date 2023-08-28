@@ -1,0 +1,18 @@
+{
+  "signup": [
+    {
+      "id": 1,
+      "name": "PI LTDA",
+      "identifier": "00000000000",
+      "email": "pi@email.com",
+      "password": "123456"
+    },
+    {
+      "name": "Pablo Henrique da Silva Cunha",
+      "identifier": "00000000000",
+      "email": "fandersonfh286@gmail.com",
+      "password": "123456",
+      "id": 2
+    }
+  ]
+}
