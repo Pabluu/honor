@@ -4,6 +4,8 @@ import { styled } from 'styled-components'
 export const LinkTo = styled(NavLink)`
   width: fit-content;
   min-width: 50%;
+  height: 2.5rem;
+  padding: 11px;
   background-color: white;
   color: ${(props) => props.theme['blue-700']};
 
@@ -13,6 +15,8 @@ export const LinkTo = styled(NavLink)`
   word-wrap: normal;
   text-decoration: none;
   text-align: center;
+
+  line-height: 1;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.85);
