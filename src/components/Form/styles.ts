@@ -1,14 +1,5 @@
 import { styled } from 'styled-components'
 
-export const MessageError = styled.span`
-  color: ${(props) => props.theme['red-600']};
-  font-weight: bold;
-  transition: all 1s;
-  min-height: 19px;
-  margin-top: 5px;
-  font-size: 0.95rem;
-`
-
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -36,7 +27,6 @@ export const FormContainer = styled.form`
 
       outline: none;
       border: none;
-      border-bottom: 1px solid ${(props) => props.theme['gray-400']};
 
       /* border-radius: 3px; */
 
@@ -52,7 +42,6 @@ export const FormContainer = styled.form`
       }
 
       &:focus {
-        border-bottom: 1px solid ${(props) => props.theme['blue-700']};
         box-shadow: none !important;
       }
     }

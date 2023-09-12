@@ -11,19 +11,9 @@ export const InContainer = styled.div`
   padding: 1.5rem;
 `
 
-export const Title = styled.h1`
-  text-transform: uppercase;
-  text-align: center;
-  color: ${(props) => props.theme['gray-1000']};
-  font: 700 1.5rem Roboto;
-
-  border-bottom: 1px solid ${(props) => props.theme['gray-700']};
-  height: 2.5rem;
-`
-
 export const DescriptionSignIn = styled.div`
   width: 23rem;
-  height: 100%;
+  /* height: 100%; */
 
   padding: 1rem;
 
@@ -35,6 +25,21 @@ export const DescriptionSignIn = styled.div`
   justify-content: center;
   align-items: center;
   row-gap: 0.75rem;
+
+  @media (max-width: 770px) {
+    width: 100%;
+    padding: 0.25rem;
+    background-color: transparent;
+    padding-inline: 1.5rem;
+
+    & *:not(a) {
+      display: none;
+    }
+
+    a {
+      width: 100%;
+    }
+  }
 
   &::selection {
     background-color: white;
