@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    height: 2.5rem;
+    min-height: 2.5rem;
     width: 100%;
 
     background-color: ${(props) => props.theme['blue-700']};
