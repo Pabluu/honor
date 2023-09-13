@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { AxiosError } from 'axios'
 import { Coins } from 'phosphor-react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -53,17 +54,24 @@ export function SignUp() {
   const handleOnSubmit: SubmitHandler<FormSchema> = async (data) => {
     const { name, identifier, email, password } = data
 
-    const response = await api.post('/signup', {
-      name,
-      identifier,
-      email,
-      password,
-    })
+    try {
+      const response = await api.post('/signup', {
+        name,
+        identifier,
+        email,
+        password,
+      })
 
-    if (response.status === 201) {
+      console.table(response)
+
       navigate('/')
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.error(error.code)
+      }
     }
   }
+
   return (
     <Container>
       <SignContainer>

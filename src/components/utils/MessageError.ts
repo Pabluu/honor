@@ -6,5 +6,5 @@ export const MessageError = styled.span`
   transition: all 1s;
   min-height: 19px;
   margin-top: 5px;
-  font-size: 0.85rem;
+  font-size: 1rem;
 `
