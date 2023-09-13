@@ -55,14 +55,14 @@ export function SignUp() {
     const { name, identifier, email, password } = data
 
     try {
-      const response = await api.post('/signup', {
+      const response = await api.post('/users', {
         name,
         identifier,
         email,
         password,
       })
 
-      console.table(response)
+      console.table(response.data)
 
       navigate('/')
     } catch (error) {

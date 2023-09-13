@@ -1,4 +1,11 @@
 {
-  "signup": [
+  "users": [
+    {
+      "name": "Pablo",
+      "identifier": "00000000001",
+      "email": "pa@email.com",
+      "password": "1234567",
+      "id": 1
+    }
   ]
 }

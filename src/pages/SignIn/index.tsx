@@ -46,6 +46,7 @@ export function SignIn() {
     })
 
     const userData = user.data[0]
+    console.table(userData)
 
     if (userData) {
       navigate('/')
