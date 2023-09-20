@@ -41,7 +41,7 @@ export function SignIn() {
   const handleOnSubmit: SubmitHandler<FormSchema> = async (data) => {
     const { email, password } = data
 
-    const user = await api.get(`/users`, {
+    const user = await api.get(`/session`, {
       params: { email, password },
     })
 
@@ -50,8 +50,6 @@ export function SignIn() {
 
     if (userData) {
       navigate('/')
-    } else {
-      setErrorLogin('Usuário não cadastrado')
     }
   }
 
