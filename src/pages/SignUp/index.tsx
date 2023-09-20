@@ -46,6 +46,7 @@ export function SignUp() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { isSubmitting, errors },
   } = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -55,19 +56,33 @@ export function SignUp() {
     const { name, identifier, email, password } = data
 
     try {
-      const response = await api.post('/users', {
-        name,
+      const response = await api.post('/signup', {
         identifier,
+        name,
         email,
         password,
       })
 
-      console.table(response.data)
+      localStorage.setItem('user', JSON.stringify(response.data))
 
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 3000)
     } catch (error) {
       if (error instanceof AxiosError) {
-        console.error(error.code)
+        const { response } = error
+
+        console.log(response?.data)
+        if (response?.data.field) {
+          setError(
+            response?.data.field,
+            {
+              type: 'string',
+              message: response?.data.message,
+            },
+            { shouldFocus: true },
+          )
+        }
       }
     }
   }
