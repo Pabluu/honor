@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { AxiosError } from 'axios'
 import { Coins } from 'phosphor-react'
-import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
@@ -28,11 +28,11 @@ type FormSchema = z.infer<typeof formSchema>
 
 export function SignIn() {
   const navigate = useNavigate()
-  const [errorLogin, setErrorLogin] = useState('')
 
   const {
     register,
     handleSubmit,
+    setError,
     formState: { isSubmitting, errors },
   } = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -41,15 +41,31 @@ export function SignIn() {
   const handleOnSubmit: SubmitHandler<FormSchema> = async (data) => {
     const { email, password } = data
 
-    const user = await api.get(`/session`, {
-      params: { email, password },
-    })
+    try {
+      const response = await api.post(`/session`, { email, password })
 
-    const userData = user.data[0]
-    console.table(userData)
+      const user = response.data
+      localStorage.setItem('user', JSON.stringify(user))
 
-    if (userData) {
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 3000) // mesmo tempo do :after do modal
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        const { response } = error
+
+        console.log(response?.data)
+        if (response?.data) {
+          setError(
+            'password',
+            {
+              type: 'string',
+              message: 'Credenciais inválidas',
+            },
+            { shouldFocus: true },
+          )
+        }
+      }
     }
   }
 
@@ -88,8 +104,6 @@ export function SignIn() {
             </Field.ContainerInput>
             {<MessageError>{errors.password?.message}</MessageError>}
           </Field.Root>
-
-          {<MessageError>{errorLogin}</MessageError>}
 
           <button type="submit" disabled={isSubmitting}>
             Entrar
