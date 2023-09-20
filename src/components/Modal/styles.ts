@@ -17,13 +17,13 @@ export const ModalStyle = styled.div`
   padding: 1rem;
 
   position: fixed;
-  top: 5rem;
-  right: 2rem;
+  top: 1rem;
+  /* right: 2rem; */
 
-  background-color: ${(props) => props.theme['gray-100']};
+  background-color: ${(props) => props.theme['gray-200']};
   color: ${(props) => props.theme['gray-1000']};
 
-  border: 2px solid ${(props) => props.theme['red-600']};
+  border: 2px solid ${(props) => props.theme['gray-1000']};
   border-radius: 5px;
 
   &::after {
@@ -33,9 +33,9 @@ export const ModalStyle = styled.div`
     left: 0;
 
     width: 100%;
-    height: 0.75rem;
+    height: 0.25rem;
 
-    background-color: ${(props) => props.theme['red-600']};
+    background-color: ${(props) => props.theme['blue-600']};
 
     animation: ${progress} 3s forwards;
   }

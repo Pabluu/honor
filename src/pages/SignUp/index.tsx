@@ -1,11 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
 import { Coins } from 'phosphor-react'
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { Field } from '../../components/Fields'
 import { Form } from '../../components/Form'
+import { Modal } from '../../components/Modal'
 import { LinkTo } from '../../components/utils/LinkTo'
 import { MessageError } from '../../components/utils/MessageError'
 import {
@@ -42,6 +45,7 @@ type FormSchema = z.infer<typeof formSchema>
 
 export function SignUp() {
   const navigate = useNavigate()
+  const [modal, setModal] = useState('')
 
   const {
     register,
@@ -64,10 +68,11 @@ export function SignUp() {
       })
 
       localStorage.setItem('user', JSON.stringify(response.data))
+      setModal('Conta criada com sucesso')
 
       setTimeout(() => {
         navigate('/')
-      }, 3000)
+      }, 3000) // mesmo tempo do :after do modal
     } catch (error) {
       if (error instanceof AxiosError) {
         const { response } = error
@@ -89,6 +94,7 @@ export function SignUp() {
 
   return (
     <Container>
+      {modal && createPortal(<Modal text={modal} />, document.body)}
       <SignContainer>
         <Form submit={handleSubmit(handleOnSubmit)}>
           {/* NAME */}
@@ -156,7 +162,6 @@ export function SignUp() {
           </button>
         </Form>
       </SignContainer>
-
       <DescriptionSignUp>
         <Coins size={64} />
 

@@ -2,13 +2,13 @@ import { XCircle } from 'phosphor-react'
 import { ModalStyle } from './styles'
 
 interface ModalProps {
-  variant?: string
+  text?: string
 }
 
-export function Modal({ variant }: ModalProps) {
+export function Modal({ text }: ModalProps) {
   return (
     <ModalStyle>
-      <div>{variant}</div>
+      <div>{text}</div>
       <XCircle size={24} />
     </ModalStyle>
   )
