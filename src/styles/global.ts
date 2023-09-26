@@ -8,6 +8,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 
+  #root{
+    width: 100vw;
+    height: 100vh;
+  }
+
   :focus{
     outline: 0;
     box-shadow: 0 0 0 2px ${(props) => props.theme['blue-500']}
