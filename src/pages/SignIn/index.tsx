@@ -47,9 +47,7 @@ export function SignIn() {
       const user = response.data
       localStorage.setItem('user', JSON.stringify(user))
 
-      setTimeout(() => {
-        navigate('/')
-      }, 3000) // mesmo tempo do :after do modal
+      navigate('/')
     } catch (error) {
       if (error instanceof AxiosError) {
         const { response } = error

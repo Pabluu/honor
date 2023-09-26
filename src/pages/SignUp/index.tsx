@@ -71,7 +71,7 @@ export function SignUp() {
       setModal('Conta criada com sucesso')
 
       setTimeout(() => {
-        navigate('/signin')
+        navigate('/')
       }, 3000) // mesmo tempo do :after do modal
     } catch (error) {
       if (error instanceof AxiosError) {
