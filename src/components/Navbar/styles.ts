@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface INavbarContainerProps {
-  isDisabled?: true | false
+  $isactive: true | false
 }
 
 export const NavbarContainer = styled.aside<INavbarContainerProps>`
@@ -10,7 +10,7 @@ export const NavbarContainer = styled.aside<INavbarContainerProps>`
   left: 0;
   width: 17.5rem;
   ${(props) =>
-    !props.isDisabled &&
+    !props.$isactive &&
     css`
       width: 3.25rem;
     `};
@@ -87,7 +87,7 @@ export const Item = styled.li`
 `
 
 interface INavButtonProps {
-  buttonActive: true | false
+  $isactive: true | false
 }
 
 export const NavButton = styled.button<INavButtonProps>`
@@ -100,7 +100,7 @@ export const NavButton = styled.button<INavButtonProps>`
   transform: rotate(0);
 
   transform: ${(props) =>
-    !props.buttonActive &&
+    !props.$isactive &&
     css`
       rotate(180deg);
     `};

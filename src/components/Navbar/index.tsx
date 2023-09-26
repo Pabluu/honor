@@ -19,7 +19,7 @@ export function NavBar() {
 
   return (
     <>
-      <NavbarContainer isDisabled={statusNav}>
+      <NavbarContainer $isactive={statusNav}>
         <Logo>LOGO AQUI</Logo>
         <Content>
           <Item>
@@ -59,7 +59,7 @@ export function NavBar() {
             </a>
           </Item>
         </Content>
-        <NavButton onClick={handleClick} buttonActive={statusNav}>
+        <NavButton onClick={handleClick} $isactive={statusNav}>
           <ArrowLeft size={24} color="#1d4ed8" />
         </NavButton>
       </NavbarContainer>
