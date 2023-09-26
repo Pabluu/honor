@@ -5,7 +5,7 @@ interface INavbarContainerProps {
 }
 
 export const NavbarContainer = styled.aside<INavbarContainerProps>`
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 17.5rem;
