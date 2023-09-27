@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
+import { ButtonPrimary } from '../../components/ButtonPrimary'
 import { Field } from '../../components/Fields'
 import { Form } from '../../components/Form'
 import { Modal } from '../../components/Modal'
@@ -157,9 +158,11 @@ export function SignUp() {
             {<MessageError>{errors.password?.message}</MessageError>}
           </Field.Root>
 
-          <button type="submit" disabled={isSubmitting}>
-            Cadastrar
-          </button>
+          <ButtonPrimary
+            text="Cadastrar"
+            type="submit"
+            disabled={isSubmitting}
+          />
         </Form>
       </SignContainer>
       <DescriptionSignUp>

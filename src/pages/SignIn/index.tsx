@@ -4,6 +4,7 @@ import { Coins } from 'phosphor-react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
+import { ButtonPrimary } from '../../components/ButtonPrimary'
 import { Field } from '../../components/Fields'
 import { Form } from '../../components/Form'
 import { LinkTo } from '../../components/utils/LinkTo'
@@ -103,9 +104,12 @@ export function SignIn() {
             {<MessageError>{errors.password?.message}</MessageError>}
           </Field.Root>
 
-          <button type="submit" disabled={isSubmitting}>
-            Entrar
-          </button>
+          <ButtonPrimary
+            text="Entrar"
+            type="submit"
+            size=""
+            disabled={isSubmitting}
+          />
         </Form>
       </SignContainer>
 
