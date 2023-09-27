@@ -1,5 +1,5 @@
 import {
-  ArrowLeft,
+  ArrowRight,
   Buildings,
   ChartLineUp,
   CheckCircle,
@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { Content, Item, Logo, NavButton, NavbarContainer } from './styles'
 
 export function NavBar() {
-  const [statusNav, setStatusNav] = useState(true)
+  const [statusNav, setStatusNav] = useState(false)
 
   function handleClick() {
     setStatusNav(!statusNav)
@@ -60,7 +60,7 @@ export function NavBar() {
           </Item>
         </Content>
         <NavButton onClick={handleClick} $isactive={statusNav}>
-          <ArrowLeft size={24} color="#1d4ed8" />
+          <ArrowRight size={24} color="#1d4ed8" />
         </NavButton>
       </NavbarContainer>
     </>

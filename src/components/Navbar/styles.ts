@@ -8,11 +8,11 @@ export const NavbarContainer = styled.aside<INavbarContainerProps>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 17.5rem;
+  width: 3.25rem;
   ${(props) =>
-    !props.$isactive &&
+    props.$isactive &&
     css`
-      width: 3.25rem;
+      width: 17.5rem;
     `};
   height: 100vh;
   display: flex;
@@ -22,8 +22,10 @@ export const NavbarContainer = styled.aside<INavbarContainerProps>`
   background-color: ${(props) => props.theme['gray-800']};
 
   transition: 0.35s;
+  z-index: 100;
+  box-shadow: 0 4px 5px 0 black;
 `
-export const Logo = styled.div`
+export const Logo = styled.span`
   height: fit-content;
   max-height: 3.5rem;
   min-height: 2.5rem;
@@ -97,12 +99,12 @@ export const NavButton = styled.button<INavButtonProps>`
 
   border-radius: 50%;
   background-color: white;
-  transform: rotate(0);
+  transform: rotate(180deg);
 
   transform: ${(props) =>
     !props.$isactive &&
     css`
-      rotate(180deg);
+      rotate(0deg);
     `};
 
   position: absolute;
