@@ -1,12 +1,23 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Menu } from '../../components/Menu'
 import { NavBar } from '../../components/Navbar'
+import { verifySession } from '../../lib/verifySession'
 import { HomeContainer } from './styles'
 
 export function Home() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!verifySession()) navigate('/signin')
+  }, [navigate])
+
   return (
     <HomeContainer>
+      <Menu />
       <NavBar />
 
-      <div>
+      {/* <div>
         <h1>HELLO MAN</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos sequi
@@ -20,7 +31,7 @@ export function Home() {
           quisquam nesciunt sit omnis reiciendis placeat reprehenderit
           blanditiis ea, amet, obcaecati porro?
         </p>
-      </div>
+      </div> */}
     </HomeContainer>
   )
 }
