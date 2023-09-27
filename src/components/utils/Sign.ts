@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: fit-content;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
   background-color: white;
   overflow: hidden;
@@ -9,6 +10,7 @@ export const Container = styled.div`
   padding: 1rem;
 
   display: flex;
+  justify-content: center;
 
   @media (max-width: 770px) {
     flex-direction: column;
@@ -70,19 +72,5 @@ export const DescriptionSignUp = styled.div`
 
   p {
     color: white;
-  }
-
-  button {
-    width: 50%;
-    background-color: white;
-    color: ${(props) => props.theme['blue-700']};
-
-    border: 1px solid ${(props) => props.theme['blue-700']};
-    border-radius: 5px;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.85);
-      /* color: white; */
-    }
   }
 `
