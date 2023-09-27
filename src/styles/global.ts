@@ -20,7 +20,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${(props) => props.theme['gray-100']};
-    color: ${(props) => props.theme['gray-100']};
+    /* color: ${(props) => props.theme['gray-100']}; */
+    color: black;
     -webkit-font-smoothing: antialiased;
 
     display: flex;
