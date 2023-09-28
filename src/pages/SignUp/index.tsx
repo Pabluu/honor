@@ -161,6 +161,7 @@ export function SignUp() {
           <ButtonPrimary
             text="Cadastrar"
             type="submit"
+            size="100%"
             disabled={isSubmitting}
           />
         </Form>
