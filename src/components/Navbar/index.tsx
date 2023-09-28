@@ -8,6 +8,7 @@ import {
   Person,
 } from 'phosphor-react'
 import { useState } from 'react'
+import { LinkTo } from '../utils/LinkTo'
 import { Content, Item, Logo, NavButton, NavbarContainer } from './styles'
 
 export function NavBar() {
@@ -23,40 +24,40 @@ export function NavBar() {
         <Logo>LOGO AQUI</Logo>
         <Content>
           <Item>
-            <a href="/">
+            <LinkTo to="/">
               <House size={24} />
               <p>Página Inicial</p>
-            </a>
+            </LinkTo>
           </Item>
           <Item>
-            <a href="/cliente">
+            <LinkTo to="/cliente">
               <Person size={24} />
               <p>Cliente</p>
-            </a>
+            </LinkTo>
           </Item>
           <Item>
-            <a href="/empresa">
+            <LinkTo to="/empresa">
               <Buildings size={24} />
               <p>Empresa</p>
-            </a>
+            </LinkTo>
           </Item>
           <Item>
-            <a href="/recibo">
+            <LinkTo to="/recibo">
               <CurrencyCircleDollar size={24} />
               <p>Honorário</p>
-            </a>
+            </LinkTo>
           </Item>
           <Item>
-            <a href="/pagamento">
+            <LinkTo to="/pagamento">
               <CheckCircle size={24} />
               <p>Confirmar Pagamento</p>
-            </a>
+            </LinkTo>
           </Item>
           <Item>
-            <a href="/relatorio">
+            <LinkTo to="/relatorio">
               <ChartLineUp size={24} />
               <p>Relatório</p>
-            </a>
+            </LinkTo>
           </Item>
         </Content>
         <NavButton onClick={handleClick} $isactive={statusNav}>

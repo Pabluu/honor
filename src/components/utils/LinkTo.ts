@@ -1,8 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 
-export const LinkTo = styled(NavLink)`
-  width: fit-content;
+interface LinkProps {
+  sizeW?: string
+}
+
+export const LinkTo = styled(NavLink)<LinkProps>`
+  width: ${(props) => props.sizeW};
   min-width: 50%;
   height: 2.5rem;
   padding: 11px;

@@ -1,4 +1,5 @@
 import { Bell, UserCircle } from 'phosphor-react'
+import { LinkTo } from '../utils/LinkTo'
 import { MenuBar, MenuItems } from './styles'
 
 export function Menu() {
@@ -10,9 +11,9 @@ export function Menu() {
         </li>
 
         <li>
-          <a href="/user">
+          <LinkTo to="/user">
             <UserCircle size={28} color="white" />
-          </a>
+          </LinkTo>
         </li>
       </MenuItems>
     </MenuBar>
