@@ -8,11 +8,13 @@ export const NavbarContainer = styled.aside<INavbarContainerProps>`
   position: fixed;
   top: 0;
   left: 0;
+  padding-inline: 0.5rem;
+
   width: 3.25rem;
   ${(props) =>
     props.$isactive &&
     css`
-      width: 17.5rem;
+      width: 15rem;
     `};
   height: 100vh;
   display: flex;
@@ -43,7 +45,6 @@ export const Content = styled.ul`
   height: fit-content;
   overflow: hidden auto;
   color: #fff;
-  padding-inline: 0.5rem;
 `
 export const Item = styled.li`
   height: fit-content;
@@ -60,7 +61,12 @@ export const Item = styled.li`
     border-right-color: ${(props) => props.theme['blue-700']};
   }
 
-  a {
+  &:has(> a.active) {
+    background-color: #393839;
+    border-right-color: #1d4ed8;
+  }
+
+  & > * {
     display: flex;
     flex-direction: row;
     column-gap: 0.75rem;
@@ -72,6 +78,24 @@ export const Item = styled.li`
     padding: 0.4rem 0.5rem;
 
     text-decoration: none;
+    text-align: left;
+
+    background-color: transparent;
+    border: none;
+    /* border-right: 5px solid rgb(217 217 217/20%); */
+    border-radius: 5px 0 0 5px;
+
+    &.active {
+      background-color: rgb(217 217 217/20%);
+    }
+    &:hover {
+      background-color: #393839;
+      border-right: 5px solid rgb(217 217 217/20%);
+    }
+
+    /* &.active {
+      border-right: 5px solid ${(props) => props.theme['blue-700']};
+    } */
 
     &:is(:active, :focus, :visited) {
       color: white;
@@ -93,12 +117,12 @@ interface INavButtonProps {
 }
 
 export const NavButton = styled.button<INavButtonProps>`
-  width: 2.125rem;
-  height: 2.125rem;
+  width: 100%;
+  height: 3.5rem;
   min-height: 2.125rem;
 
-  border-radius: 50%;
-  background-color: white;
+  background-color: transparent;
+  border: none;
   transform: rotate(180deg);
 
   transform: ${(props) =>
@@ -107,16 +131,12 @@ export const NavButton = styled.button<INavButtonProps>`
       rotate(0deg);
     `};
 
-  position: absolute;
-  right: -1rem;
-  top: 2rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:hover {
-    background-color: white;
+    background-color: #393839;
   }
   &:focus {
     outline: 0;

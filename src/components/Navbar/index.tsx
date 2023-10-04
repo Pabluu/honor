@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   Buildings,
   ChartLineUp,
   CheckCircle,
@@ -9,7 +8,9 @@ import {
 } from 'phosphor-react'
 import { useState } from 'react'
 import { LinkTo } from '../utils/LinkTo'
-import { Content, Item, Logo, NavButton, NavbarContainer } from './styles'
+import { Content, Item, NavButton, NavbarContainer } from './styles'
+
+import logo from '../../../logo.svg'
 
 export function NavBar() {
   const [statusNav, setStatusNav] = useState(false)
@@ -21,7 +22,9 @@ export function NavBar() {
   return (
     <>
       <NavbarContainer $isactive={statusNav}>
-        <Logo>LOGO AQUI</Logo>
+        <NavButton onClick={handleClick} $isactive={statusNav}>
+          <img src={logo} alt="" />
+        </NavButton>
         <Content>
           <Item>
             <LinkTo to="/">
@@ -60,9 +63,6 @@ export function NavBar() {
             </LinkTo>
           </Item>
         </Content>
-        <NavButton onClick={handleClick} $isactive={statusNav}>
-          <ArrowRight size={24} color="#1d4ed8" />
-        </NavButton>
       </NavbarContainer>
     </>
   )

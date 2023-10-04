@@ -29,7 +29,18 @@ export const MenuItems = styled.ul`
 
   width: 100%;
 
-  li::marker {
-    content: '';
+  & a {
+    display: block;
+    height: fit-content;
+    border: none;
+    padding: 5px;
+
+    &:hover {
+      background-color: #d9d9d933;
+    }
+  }
+
+  li {
+    list-style: none;
   }
 `

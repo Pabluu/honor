@@ -7,13 +7,15 @@ interface LinkProps {
 
 export const LinkTo = styled(NavLink)<LinkProps>`
   width: ${(props) => props.sizeW};
-  min-width: 50%;
+  min-width: fit-content;
   height: 2.5rem;
-  padding: 11px;
-  background-color: white;
-  color: ${(props) => props.theme['blue-700']};
+  padding: 6px 8px;
+  background-color: transparent;
+  /* color: ${(props) => props.theme['blue-700']}; */
+  color: white;
 
-  border: 1px solid ${(props) => props.theme['blue-700']};
+  /* border: 1px solid ${(props) => props.theme['blue-700']}; */
+  border: none;
   border-radius: 5px;
 
   word-wrap: normal;
@@ -23,7 +25,7 @@ export const LinkTo = styled(NavLink)<LinkProps>`
   line-height: 1;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: #393839;
     /* color: white; */
   }
   &:active {
