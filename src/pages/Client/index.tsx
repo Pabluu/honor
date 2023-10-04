@@ -1,9 +1,9 @@
-import { Circle, Person } from 'phosphor-react'
-import { useNavigate } from 'react-router-dom'
+import { Person } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import { ButtonPrimary } from '../../components/ButtonPrimary'
 import { Menu } from '../../components/Menu'
 import { NavBar } from '../../components/Navbar'
-import { verifySession } from '../../lib/verifySession'
+import { api } from '../../lib/axios'
 import {
   ClientContainer,
   ClientHead,
@@ -12,12 +12,26 @@ import {
   Title,
 } from './styles'
 
-export function Client() {
-  const navigate = useNavigate()
+interface clientSchema {
+  id: number
+  name: string
+  active: boolean
+  type: object
+  company_id: string
+}
 
-  if (!verifySession()) {
-    navigate('/sigin')
+export function Client() {
+  // const navigate = useNavigate()
+  const [listClients, setListClients] = useState([])
+
+  async function fetchData() {
+    const { data } = await api.get('/client')
+    setListClients(data.clients)
   }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <>
@@ -35,64 +49,24 @@ export function Client() {
         <ClientTable>
           <thead>
             <tr>
-              <th> </th>
               <th>#id</th>
               <th className="all">Nome</th>
-              <th>Valor</th>
-              <th>Status de Pagamento</th>
+              <th>Status</th>
+              <th>Tipo de Cliente</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <Circle size={24} color="#FACC15" weight="fill" />
-              </td>
-              <td>001</td>
-              <td>Jefferson</td>
-              <td>R$ 1000,00</td>
-              <td>Aberto</td>
-            </tr>
-
-            <tr>
-              <td>
-                <Circle size={24} color="#00B37E" weight="fill" />
-              </td>
-              <td>002</td>
-              <td>Pablo Henrique</td>
-              <td>R$ 350,00</td>
-              <td>Pago</td>
-            </tr>
-
-            <tr>
-              <td>
-                <Circle size={24} color="#FACC15" weight="fill" />
-              </td>
-              <td>003</td>
-              <td>Silva Cunha</td>
-              <td>R$ 100,00</td>
-              <td>Aberto</td>
-            </tr>
-
-            <tr>
-              <td>
-                <Circle size={24} color="#3F3F46" weight="fill" />
-              </td>
-              <td>004</td>
-              <td>Irmandade</td>
-              <td>R$ 120,00</td>
-              <td>-</td>
-            </tr>
-
-            <tr>
-              <td>
-                <Circle size={24} color="#00B37E" weight="fill" />
-              </td>
-              <td>005</td>
-              <td>Isabela</td>
-              <td>R$ 1320,00</td>
-              <td>Pago</td>
-            </tr>
+            {listClients.map((client: clientSchema) => {
+              return (
+                <tr key={client.id}>
+                  <td>{client.id}</td>
+                  <td>{client.name}</td>
+                  <td>{client.active.toString()}</td>
+                  <td>{client.type.toString()}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </ClientTable>
       </ClientContainer>
